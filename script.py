@@ -22,14 +22,14 @@ class AutoControl(object):
 
     def swipe_up(self):
         x1 = self.width * 0.5
-        y1 = self.height * 0.75
-        y2 = self.height * 0.25
+        y1 = self.height * 0.6
+        y2 = self.height * 0.4
         self.driver.swipe(x1, y1, x1, y2, self.duration)
 
     def swipe_down(self):
         x1 = self.width * 0.5
-        y1 = self.height * 0.25
-        y2 = self.height * 0.75
+        y1 = self.height * 0.4
+        y2 = self.height * 0.6
         self.driver.swipe(x1, y1, x1, y2, self.duration)
 
     def swipe_left(self):
@@ -45,16 +45,17 @@ class AutoControl(object):
         self.driver.swipe(x1, y1, x2, y1, self.duration)
 
     def follow(self):
-        self.driver.tap([(557, 572), (581, 596)], 100)
+        self.driver.tap([(557, 572)], 100)
 
     def star(self):
-        self.driver.tap([(544, 612), (594, 662)], 100)
+        self.driver.tap([(544, 612)], 100)
 
     def comment(self):
-        self.driver.tap([(549, 689), (589, 729)], 100)
+        self.driver.tap([(549, 689)], 100)
 
     def close_comment(self):
         self.driver.tap([(280, 216)], 100)
+        time.sleep(1)
         self.driver.tap([(280, 200)], 100)
 
     def search(self, keyword):
@@ -65,7 +66,6 @@ class AutoControl(object):
         self.driver.tap([(552, 785)], 100)
 
 
-
 auto = AutoControl()
 print('等待视频刷新中..............')
 time.sleep(8)
@@ -73,7 +73,7 @@ time.sleep(8)
 while 1:
     auto.swipe_left()
     print('用户信息收集中。。。。。')
-    time.sleep(5)
+    time.sleep(10)
     try:
         with open('user_data.txt', 'r', encoding='utf-8') as r:
             content = r.read()
@@ -89,21 +89,21 @@ while 1:
         time.sleep(2)
         print('返回。。。')
         try:
-            auto.driver.tap([(23, 53), (20, 50)], 100)
+            auto.driver.tap([(23, 53)], 100)
         except:
-            auto.driver.tap([(23, 53), (20, 50)], 100)
+            auto.driver.tap([(23, 53)], 100)
         print('开始下一个。。。')
         time.sleep(2)
         auto.swipe_up()
         time.sleep(2)
         continue
-    time.sleep(2)
+    time.sleep(5)
     try:
         el1 = auto.driver.find_element_by_xpath('//android.widget.ImageView[@content-desc="视频1"]')
         el1.click()
     except:
         print('模拟点击')
-        auto.driver.tap([(99, 742), (95, 750)], 100)
+        auto.driver.tap([(99, 742)], 100)
     time.sleep(2)
     auto.comment()
     time.sleep(2)
@@ -115,20 +115,21 @@ while 1:
         auto.comment()
         time.sleep(2)
         auto.close_comment()
+        time.sleep(1)
     if os.path.exists('user_data.txt'):
         os.remove('user_data.txt')
     time.sleep(2)
     print('返回。。。')
     try:
-        auto.driver.tap([(23, 53), (20, 50)], 100)
+        auto.driver.tap([(23, 53)], 100)
     except:
-        auto.driver.tap([(23, 53), (20, 50)], 100)
+        auto.driver.tap([(22, 55)], 100)
     print('开始下一个。。。')
     time.sleep(2)
     try:
-        auto.driver.tap([(23, 53), (20, 50)], 100)
+        auto.driver.tap([(23, 53)], 100)
     except:
-        auto.driver.tap([(23, 53), (20, 50)], 100)
+        auto.driver.tap([(22, 55)], 100)
     auto.swipe_up()
     time.sleep(2)
 

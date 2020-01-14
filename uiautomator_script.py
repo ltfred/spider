@@ -90,9 +90,30 @@ class Auto(object):
         # 话题搜索
         if category == 4:
             # 进入搜索的话题
-            self.d.click(0.335, 0.158)
+            time.sleep(3)
+            el = self.d(resourceId="com.ss.android.ugc.aweme:id/eiu", text=keyword)
+            el.click()
+            self.d(scrollable=True).scroll.toEnd(60)
             self.search_return_index()
 
 
 auto = Auto()
-auto.search('时间从来不语，却回答了所有问题', 1)
+keyword = '新年许心愿赢新衣'
+coon = redis.Redis(host='127.0.0.1', port=6379)
+coon.set('search_keyword', keyword)
+auto.search(keyword, 1)
+
+# sub = coon.pubsub()
+# # 阻塞获取消息
+# sub.psubscribe(['message'])
+# for item in sub.listen():
+#     message = item['data']
+#     if message != 1:
+#         message = str(message, encoding='utf-8')
+#         message = eval(message)
+#         if message['type'] == 'star':
+#             auto.star()
+#         elif message['type'] == 'get_comment':
+#             auto.get_comment()
+#         elif message['type'] == 'search':
+#             auto.search('kfc', 4)

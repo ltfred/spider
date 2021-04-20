@@ -35,7 +35,7 @@ Pillow==6.2.1
 progress==1.5
 protobuf==3.10.0
 publicsuffix2==2.20190812
-py==1.8.0
+py==1.10.0
 pyasn1==0.4.8
 pycparser==2.19
 pyelftools==0.26

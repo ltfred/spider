@@ -28,7 +28,7 @@ ldap3==2.6.1
 logzero==1.5.0
 lxml==4.4.2
 MarkupSafe==1.1.1
-mitmproxy==5.0.0
+mitmproxy==7.0.3
 packaging==19.2
 passlib==1.7.2
 Pillow==6.2.1
